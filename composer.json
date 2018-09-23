@@ -1,0 +1,22 @@
+{
+  "name": "paranoidsqd/wdt",
+  "description": "wdt is a laravel sdk for Wang Dian Tong(an E-Commerce ERP)",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "lazygunner",
+      "email": "gymgunner@mgail.com"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "ParanoidSqd\\WDT\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "ParanoidSqd\\WDT\\Tests\\": "tests/"
+    }
+  }
+}
