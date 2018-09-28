@@ -131,13 +131,13 @@ class WdtClient
 
     function logisticsSyncAck($recId, $status=0, $message='')
     {
-        $reqBody = array
-        (
+        $reqBody = ['logistics_list' =>
+        [
             'rec_id'    => $recId,
             'status'     => $status,
             'message'     => $message,
-        );
-        $res = $this->wdtOpenApi($reqBody, '/openapi2/logistics_sync_ack.php');
+        ]];
+        $res = $this->wdtOpenApi([$reqBody], '/openapi2/logistics_sync_ack.php');
 
         return $res;
     }
