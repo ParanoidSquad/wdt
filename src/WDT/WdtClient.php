@@ -129,15 +129,26 @@ class WdtClient
         return $res;
     }
 
-    function logisticsSyncAck($recId, $status=0, $message='')
+    /**
+     * @param $logisticsList
+    “logistics_list”:
+    [
     {
-        $reqBody = ['logistics_list' =>
-        [
-            'rec_id'    => $recId,
-            'status'     => $status,
-            'message'     => $message,
-        ]];
-        $res = $this->wdtOpenApi([$reqBody], '/openapi2/logistics_sync_ack.php');
+    "rec_id": "1",
+    "status": 0,
+    "message": "同步成功"
+    },
+    {
+    "rec_id": "2",
+    "status": 1,
+    "message": "同步失败:物流单号不格式错误"
+    }
+    ]
+     * @return mixed|null
+     */
+    function logisticsSyncAck($logisticsList)
+    {
+        $res = $this->wdtOpenApi($logisticsList, '/openapi2/logistics_sync_ack.php');
 
         return $res;
     }
