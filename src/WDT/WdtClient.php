@@ -166,6 +166,8 @@ class WdtClient
             'page_no'    => $pageNo,
         );
         $res = $this->wdtOpenApi($reqBody, '/openapi2/stock_query.php');
+
+        return $res;
     }
 
     /**
