@@ -131,19 +131,19 @@ class WdtClient
 
     /**
      * @param $logisticsList
-    “logistics_list”:
-    [
-    {
-    "rec_id": "1",
-    "status": 0,
-    "message": "同步成功"
-    },
-    {
-    "rec_id": "2",
-    "status": 1,
-    "message": "同步失败:物流单号不格式错误"
-    }
-    ]
+     * “logistics_list”:
+     * [
+     * {
+     * "rec_id": "1",
+     * "status": 0,
+     * "message": "同步成功"
+     * },
+     * {
+     * "rec_id": "2",
+     * "status": 1,
+     * "message": "同步失败:物流单号不格式错误"
+     * }
+     * ]
      * @return mixed|null
      */
     function logisticsSyncAck($logisticsList)
@@ -152,8 +152,6 @@ class WdtClient
 
         return $res;
     }
-
-
 
     function stockQuery($warehouseNo, $specNo, $barCode, $startTime, $endTime, $pageSize, $pageNo)
     {
@@ -168,7 +166,44 @@ class WdtClient
             'page_no'    => $pageNo,
         );
         $res = $this->wdtOpenApi($reqBody, '/openapi2/stock_query.php');
+    }
 
+    /**
+     * @param $refundList
+     *
+     * "api_refund_list":
+     *     [
+     *         {
+     *         "tid": "test00053120009-3",
+     *         "shop_no":"test",
+     *         "platform_id":127
+     *         "refund_no": 6,
+     *         "type": "1",
+     *         "status": "success",
+     *         "refund_fee": "",
+     *         "alipay_no": "mytest",
+     *         "buyer_nick": "",
+     *         "refund_time": "1212121",
+     *         "reason": "测试者",
+     *         "desc": "北京",
+     *         "refund_version": "北京市",
+     *         "order_list":
+     *             [
+     *                 {
+     *                 "oid": "test0005-01-03",
+     *                 "num": 2
+     *                 }
+     *             ]
+     *         }
+     *     ]
+     * @return mixed|null
+     */
+    function refund($refundList)
+    {
+        $reqBody = array(
+            'api_refund_list' => json_encode($refundList, JSON_UNESCAPED_UNICODE)
+        );
+        $res = $this->wdtOpenApi($reqBody, '/openapi2/sales_refund_push.php');
         return $res;
     }
 }
