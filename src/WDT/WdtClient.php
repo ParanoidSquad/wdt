@@ -152,4 +152,23 @@ class WdtClient
 
         return $res;
     }
+
+
+
+    function stockQuery($warehouseNo, $specNo, $barCode, $startTime, $endTime, $pageSize, $pageNo)
+    {
+        $reqBody = array
+        (
+            'warehouse_no'    => $warehouseNo,
+            'spec_no'    => $specNo,
+            'barcode'    => $barCode,
+            'start_time'    => $startTime,
+            'end_time'    => $endTime,
+            'page_size'    => $pageSize,
+            'page_no'    => $pageNo,
+        );
+        $res = $this->wdtOpenApi($reqBody, '/openapi2/stock_query.php');
+
+        return $res;
+    }
 }
